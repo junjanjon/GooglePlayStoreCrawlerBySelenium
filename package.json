@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "hiroi_junki <junki.hiroi@drecom.co.jp>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "selenium-webdriver": "^4.4.0"
+  }
 }
