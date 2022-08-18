@@ -5,6 +5,7 @@
   "author": "hiroi_junki <junki.hiroi@drecom.co.jp>",
   "license": "MIT",
   "dependencies": {
-    "selenium-webdriver": "^4.4.0"
+    "selenium-webdriver": "^4.4.0",
+    "yargs": "^17.5.1"
   }
 }
