@@ -1,7 +1,8 @@
 {
-  "name": "GooglePlayStore-InformationCrawlerBySelenium",
+  "name": "GooglePlayStoreCrawlerBySelenium",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": "./index.js",
   "author": "hiroi_junki <junki.hiroi@drecom.co.jp>",
   "license": "MIT",
   "dependencies": {

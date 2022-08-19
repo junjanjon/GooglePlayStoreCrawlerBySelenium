@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const webdriver = require('selenium-webdriver');
 const {Builder, By, until} = webdriver;
 const chrome = require('selenium-webdriver/chrome');
