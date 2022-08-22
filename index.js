@@ -9,7 +9,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
     .option('app_id', {
       demandOption: true,
       default: 'com.amazon.mShop.android.shopping',
-      describe: 'app_id',
+      describe: 'Android app id',
       type: 'string',
     })
     .argv;
