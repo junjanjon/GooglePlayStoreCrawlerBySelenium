@@ -23,6 +23,10 @@ const sleep = () => new Promise((resolve) => {
 
 (async () => {
   const options = new chrome.Options().headless();
+  options.addArguments([
+    "no-sandbox",
+    "disable-dev-shm-usage"
+  ]);
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
   try {
