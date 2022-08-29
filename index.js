@@ -34,6 +34,10 @@ const sleep = () => new Promise((resolve) => {
 
     const mainClassName = 'qZmL0';
     const mainElement = await driver.wait(until.elementLocated(By.className(mainClassName)), TIMEOUT);
+    // NOTE: ボタンが画面内になるようにスクロールする。
+    const targetRect = await mainElement.getRect();
+    const y = targetRect.y;
+    driver.executeScript(`window.scrollTo(0, ${y});`)
     await mainElement.findElement(By.css('c-wiz > div > section > header > div > div > button')).click();
 
     const informationsClassName = 'G1zzid';
