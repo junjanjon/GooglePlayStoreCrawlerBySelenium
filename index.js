@@ -24,8 +24,8 @@ const sleep = () => new Promise((resolve) => {
 (async () => {
   const options = new chrome.Options().headless();
   options.addArguments([
-    "no-sandbox",
-    "disable-dev-shm-usage"
+    'no-sandbox',
+    'disable-dev-shm-usage',
   ]);
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
@@ -37,7 +37,7 @@ const sleep = () => new Promise((resolve) => {
     // NOTE: ボタンが画面内になるようにスクロールする。
     const targetRect = await mainElement.getRect();
     const y = targetRect.y;
-    driver.executeScript(`window.scrollTo(0, ${y});`)
+    driver.executeScript(`window.scrollTo(0, ${y});`);
     await mainElement.findElement(By.css('c-wiz > div > section > header > div > div > button')).click();
 
     const informationsClassName = 'G1zzid';
