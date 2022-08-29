@@ -9,7 +9,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
     .option('app_id', {
       demandOption: true,
       default: 'com.amazon.mShop.android.shopping',
-      describe: 'app_id',
+      describe: 'Android app id',
       type: 'string',
     })
     .argv;
@@ -23,6 +23,10 @@ const sleep = () => new Promise((resolve) => {
 
 (async () => {
   const options = new chrome.Options().headless();
+  options.addArguments([
+    "no-sandbox",
+    "disable-dev-shm-usage"
+  ]);
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
   try {
@@ -30,6 +34,10 @@ const sleep = () => new Promise((resolve) => {
 
     const mainClassName = 'qZmL0';
     const mainElement = await driver.wait(until.elementLocated(By.className(mainClassName)), TIMEOUT);
+    // NOTE: ボタンが画面内になるようにスクロールする。
+    const targetRect = await mainElement.getRect();
+    const y = targetRect.y;
+    driver.executeScript(`window.scrollTo(0, ${y});`)
     await mainElement.findElement(By.css('c-wiz > div > section > header > div > div > button')).click();
 
     const informationsClassName = 'G1zzid';

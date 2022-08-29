@@ -1,0 +1,22 @@
+name: test
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: node:18.7
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run install unzip
+        run: apt-get update && apt-get install -y unzip
+      - name: Run install chromedriver
+        run: ./scripts/osx/prepare_chromedriver.sh
+      - name: Run install google-chrome
+        run: ./scripts/linux/install_google-chrome.sh
+      - name: Run CI test
+        run: yarn install && PATH=${PATH}:$(pwd) node index.js
