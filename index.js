@@ -12,8 +12,14 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
       describe: 'Android app id',
       type: 'string',
     })
+    .option('no_headless', {
+      default: false,
+      describe: 'no headless',
+      type: 'boolean',
+    })
     .argv;
 const appId = argv['app_id'];
+const headless = !argv['no_headless'];
 
 const sleep = () => new Promise((resolve) => {
   setTimeout(() => {
@@ -22,7 +28,10 @@ const sleep = () => new Promise((resolve) => {
 });
 
 (async () => {
-  const options = new chrome.Options().headless();
+  const options = new chrome.Options();
+  if (headless) {
+    options.headless();
+  }
   options.addArguments([
     'no-sandbox',
     'disable-dev-shm-usage',
