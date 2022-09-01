@@ -36,7 +36,12 @@ npx github:junjanjon/GooglePlayStoreCrawlerBySelenium --app_id com.amazon.mShop.
 ### Option
 
 ```
---app_id : Android app id   [string] [require] [default: "com.amazon.mShop.android.shopping"]
-
-Ex) Page: https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping => app id: com.amazon.mShop.android.shopping
+Options:
+  --help         Show help                                             [boolean]
+  --version      Show version number                                   [boolean]
+  --app_id       Android app id
+              [string] [required] [default: "com.amazon.mShop.android.shopping"]
+  --no_headless  no headless                          [boolean] [default: false]
+  --format       Output format ("text" or "json", Default "text")
+                                                      [string] [default: "text"]
 ```
