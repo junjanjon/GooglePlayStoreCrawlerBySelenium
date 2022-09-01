@@ -12,8 +12,20 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
       describe: 'Android app id',
       type: 'string',
     })
+    .option('no_headless', {
+      default: false,
+      describe: 'no headless',
+      type: 'boolean',
+    })
+    .option('format', {
+      default: 'text',
+      describe: 'Output format ("text" or "json", Default "text")',
+      type: 'string',
+    })
     .argv;
 const appId = argv['app_id'];
+const headless = !argv['no_headless'];
+const format = argv['format'];
 
 const sleep = () => new Promise((resolve) => {
   setTimeout(() => {
@@ -22,7 +34,10 @@ const sleep = () => new Promise((resolve) => {
 });
 
 (async () => {
-  const options = new chrome.Options().headless();
+  const options = new chrome.Options();
+  if (headless) {
+    options.headless();
+  }
   options.addArguments([
     'no-sandbox',
     'disable-dev-shm-usage',
@@ -49,10 +64,21 @@ const sleep = () => new Promise((resolve) => {
     const keyClassName = 'q078ud';
     const valueClassName = 'reAt0';
     const blockElements = await informationsElement.findElements(By.className(blockClassName));
-    for (const e of blockElements) {
-      const key = await e.findElement(By.className(keyClassName)).getText();
-      const value = await e.findElement(By.className(valueClassName)).getText();
-      console.log(`${key} : ${value}`);
+    if (format === 'text') {
+      for (const e of blockElements) {
+        const key = await e.findElement(By.className(keyClassName)).getText();
+        const value = await e.findElement(By.className(valueClassName)).getText();
+        console.log(`${key} : ${value}`);
+      }
+    } else if (format === 'json') {
+      const data = {};
+      for (const e of blockElements) {
+        const key = await e.findElement(By.className(keyClassName)).getText();
+        const value = await e.findElement(By.className(valueClassName)).getText();
+        data[key] = value;
+      }
+      const str = JSON.stringify(data);
+      console.log(str);
     }
   } finally {
     driver.quit();
