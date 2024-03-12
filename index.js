@@ -36,7 +36,7 @@ const sleep = () => new Promise((resolve) => {
 (async () => {
   const options = new chrome.Options();
   if (headless) {
-    options.headless();
+    options.addArguments('--headless=new');
   }
   options.addArguments([
     'no-sandbox',
