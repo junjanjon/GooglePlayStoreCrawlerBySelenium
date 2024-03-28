@@ -15,7 +15,7 @@ jobs:
       - name: Run install unzip
         run: apt-get update && apt-get install -y unzip
       - name: Run install chromedriver
-        run: ./scripts/osx/prepare_chromedriver.sh
+        run: ./scripts/linux/prepare_chromedriver.sh
       - name: Run install google-chrome
         run: ./scripts/linux/install_google-chrome.sh
       - name: Run CI test
