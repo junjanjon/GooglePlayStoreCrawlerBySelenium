@@ -37,11 +37,12 @@ npx github:junjanjon/GooglePlayStoreCrawlerBySelenium --app_id com.amazon.mShop.
 
 ```
 Options:
-  --help         Show help                                             [boolean]
-  --version      Show version number                                   [boolean]
-  --app_id       Android app id
+  --help      Show help                                                [boolean]
+  --version   Show version number                                      [boolean]
+  --app_id    Android app id
               [string] [required] [default: "com.amazon.mShop.android.shopping"]
-  --no_headless  no headless                          [boolean] [default: false]
-  --format       Output format ("text" or "json", Default "text")
+  --headless  headless mode (`--headless` or `--no-headless`, Default
+              `--headless`)                            [boolean] [default: true]
+  --format    Output format ("text" or "json", Default "text")
                                                       [string] [default: "text"]
 ```

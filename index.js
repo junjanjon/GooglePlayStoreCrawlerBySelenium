@@ -12,9 +12,9 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
       describe: 'Android app id',
       type: 'string',
     })
-    .option('no_headless', {
-      default: false,
-      describe: 'no headless',
+    .option('headless', {
+      default: true,
+      describe: 'headless mode (`--headless` or `--no-headless`, Default `--headless`)',
       type: 'boolean',
     })
     .option('format', {
@@ -24,7 +24,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
     })
     .argv;
 const appId = argv['app_id'];
-const headless = !argv['no_headless'];
+const headless = argv['headless'];
 const format = argv['format'];
 
 const sleep = () => new Promise((resolve) => {
