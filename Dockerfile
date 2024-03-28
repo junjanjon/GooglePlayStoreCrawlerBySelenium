@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     unzip curl jq
 
 # chromedriver を PATH 以下に配置
-ADD scripts/osx/prepare_chromedriver.sh /opt/chrome/
+ADD scripts/linux/prepare_chromedriver.sh /opt/chrome/
 RUN /opt/chrome/prepare_chromedriver.sh
 ENV PATH $PATH:/opt/chrome
 
