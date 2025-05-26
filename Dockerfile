@@ -1,4 +1,4 @@
-FROM node:23.8
+FROM node:24.1
 # linux 用の確認環境を作るための Dockerfile
 
 RUN apt-get update && apt-get install -y \
